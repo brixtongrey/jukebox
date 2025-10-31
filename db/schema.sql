@@ -12,7 +12,7 @@ CREATE TABLE playlists (
 CREATE TABLE tracks (
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
-    duration_ms INTEGER NOT NULL,
+    duration_ms INTEGER NOT NULL
 );
 
 CREATE TABLE playlists_tracks (

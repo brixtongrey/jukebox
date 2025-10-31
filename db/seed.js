@@ -31,8 +31,8 @@ async function seed() {
 
         CREATE TABLE playlists_tracks (
           id SERIAL PRIMARY KEY,
-          playlist_id INTEGER NOT NULL playlists(id) ON DELETE CASCADE,
-          track_id INTEGER NOT NULL tracks(id) ON DELETE CASCADE,
+          playlist_id INTEGER NOT NULL REFERENCES playlists(id) ON DELETE CASCADE,
+          track_id INTEGER NOT NULL REFERENCES tracks(id) ON DELETE CASCADE,
           CONSTRAINT unique_playlist_track UNIQUE (playlist_id, track_id)
         );
         `);
