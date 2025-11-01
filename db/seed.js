@@ -9,6 +9,20 @@ await db.end();
 console.log("🌱 Database seeded.");
 
 async function seed() {
-  // TODO
-  
+  // TODO create 20 tracks
+  for (let i = 1; i <= 20; i++) {
+    await createTrack("Track " + i, 18000 + i);
+  }
+
+// TODO create 10 playlists
+  for (let i = 1; i <= 10; i++) {
+    await createPlaylist("Playlist " + i, "Playlist number " + i);
+  }
+
+  // TODO create 15 playlist-track associations randomly
+    for (let i = 1; i <= 15; i++) {
+      const playlistId = 1 + Math.floor(Math.random() * 10);
+      const trackId = 1 + Math.floor(Math.random() * 20);
+      await createPlaylistTrack(playlistId, trackId);
+    }
 }
