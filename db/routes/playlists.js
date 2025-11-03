@@ -1,5 +1,5 @@
 import express from "express";
-import { getPlaylists, createPlaylist, getPlaylistById } from "./db/queries/playlists.js";
+import { getPlaylists, createPlaylist, getPlaylistById } from "#db/queries/playlists";
 
 import { createPlaylistTrack, getTracksByPlaylistId } from "#db/queries/playlists_tracks";
 
@@ -12,20 +12,18 @@ router.get("/", async (req, res) => {
 });
 
 // // POST /playlists
-// router.post("/", async (req, res) => {
-//   const playlist = await createPlaylist();
-//   res.status(201).send(playlist);
-// });
-
 router.post("/", async (req, res) => {
   const { name, description } = req.body;
-
   if (!name || !description) {
     return res.status(400).send("name and description are required.");
   }
 
-  const playlist = await createPlaylist(name, description);
-  res.status(201).send(playlist);
+  try {
+    const playlist = await createPlaylist(name, description);
+    res.status(201).send(playlist);
+  } catch (err) {
+    res.status(500).send(err.message);
+  }
 });
 
 // Validate /playlists/:id
