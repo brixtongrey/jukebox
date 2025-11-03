@@ -2,7 +2,7 @@ import db from "#db/client";
 
 export async function createPlaylistTrack(playlistId, trackId) {
     const sql = `
-    INSTER INTO playlists_tracks (playlist_id, track_id)
+    INSERT INTO playlists_tracks (playlist_id, track_id)
     VALUES ($1, $2)
     ON CONFLICT DO NOTHING
     RETURNING *

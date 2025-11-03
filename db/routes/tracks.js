@@ -11,6 +11,8 @@ router.get("/", async (req, res) => {
 
 // Param middleware to validate /tracks/:id
 router.param("id", async (req, res, next, id) => {
+  if (isNaN(id)) return res.status(400).send("id must be a number.");
+
   const track = await getTrackById(id);
   if (!track) return res.status(404).send("Track not found.");
 

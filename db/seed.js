@@ -1,7 +1,7 @@
 import db from "#db/client";
-import { createTrack } from "./queries/tracks";
-import { createPlaylist } from "./queries/playlists";
-import { createPlaylistTrack } from "./queries/playlists_tracks";
+import { createTrack } from "./queries/tracks.js";
+import { createPlaylist } from "./queries/playlists.js";
+import { createPlaylistTrack } from "./queries/playlists_tracks.js";
 
 await db.connect();
 await seed();
